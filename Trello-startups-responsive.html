@@ -1,0 +1,1503 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+		.bg-light
+				{
+					margin:1rem 0rem 0rem 0rem;
+					z-index: 99;
+					padding: 0 15px 0 15px;
+					position: sticky;
+					top: 0;
+					background-color: #fff;
+				}
+			.icon-bar{
+				color:black;
+				border:1px solid black;
+				background-color:black;
+			}
+			.navbar-nav >li >a{
+				color:black;
+			}
+
+			.navbar-brand{
+				font-size:2.5rem;
+				color:black;
+			}
+			.dropdown{
+				position:static;
+			}
+			.features-menu,.solutions-menu,.plans-menu{
+				display:grid;
+				grid-template-columns:70% 30%;
+			}
+			.features-components,.solutions-components,.plans-components{
+				display:grid;
+				grid-template-columns:auto auto auto;
+				padding:2rem 4rem;
+				gap:1rem 1rem;
+			}
+			.features-components>a,.solutions-components>a,.plans-components>a{
+				color:black;
+				text-decoration:none;
+			}
+			.plans-components>.Free-plan{
+				grid-column:1/span 3;
+				background-color: rgba(255, 250, 229, 0.4);
+			}
+			.head-item{
+				grid-column:1/span 3;
+			}
+			.dropdown-menu{
+				border:1px solid none;
+			}
+			.meet-trello,.solutions-meet-trello{
+				background-color: rgba(234, 230, 255, 0.4);
+				padding:2rem;
+			}
+			.meet-trello>a{
+				color:black;
+				padding:1rem;
+				border:1px solid black;
+				border-radius:0.5rem;
+				display:block;
+				margin:2rem 0rem;
+			}
+			.solutions-meet-trello>a{
+				color:black;
+				text-decoration:none;
+			}
+			.small-screen-menu{
+				position:absolute;
+				top:0;
+				left:0;
+				transform:translateY(-100%)!important;
+				transition: transform 0.3s ease-in-out;
+				max-width:100%;
+				overflow:hidden;
+				
+			}
+			.mobile-screen-collapsible-navbar,.mobile-features-menu,.mobile-solutions-menu,.mobile-plans-menu,.mobile-resources-menu{
+				display:none;
+			}
+			span.r-arrow{
+				color:blue;
+			}
+			a.tour-trello{
+				border:1px solid rgb(255, 171, 0);
+				border-radius:0.5rem;
+				padding:1rem;
+			}
+			@media(max-width:767.5px){
+			nav{
+				display:none;
+			}
+			.mobile-screen-collapsible-navbar{
+				display:block;
+				overflow:hidden;
+				position:fixed;
+				top:0;
+				left:0;
+				width:100%;
+				background-color:white;
+				z-index:10;
+			}
+			.fa-bars{
+				position:relative;
+				left:90%;
+				bottom:40px;
+				font-size:2.5rem;
+			}
+			.small-screen-menu{	
+				position:absolute;
+				top:0;
+				left:0;
+				transform:translateY(-100%)!important;
+				transition: transform 0.3s ease-in-out;
+				max-width:100%;
+				overflow:hidden;
+			}
+			.small-screen-menu.active{
+				transform:translateY(0%)!important;
+				position:fixed;
+				top:10%;
+				display:grid;
+				font-size:2.5rem;
+				grid-template-rows:100px 100px 100px 100px 100px 100px 100px;
+				width:100%;
+				background-color:white;
+				z-index:99;
+			}
+			.small-screen-menu>div{
+				border:1px solid rgb(223, 225, 230);
+				padding:3rem 0rem 0rem 2rem;
+				position:relative;
+			}
+			.gt-link{
+				position:absolute;
+				top:3rem;
+				right:2rem;
+			}
+
+			.back-button{
+				position:relative;
+				left:5%;
+				opacity:0;
+			}
+			.mobile-features-menu,.mobile-solutions-menu,.mobile-resources-menu{
+				position:fixed;
+				top:98px;
+				left:0;
+				width:100%;
+				max-height:80vh;
+				transform:translateX(100%);
+				transition:transform 0.3s ease-in-out;
+				display:grid;
+				margin:1rem 0rem 2rem 0rem;
+				padding:0rem 1.5rem 0rem 1.5rem;
+				color:rgb(23, 43, 77);
+				overflow-y:auto;
+				overflow-x:hidden;
+				overscroll-behavior:contain;
+				z-index:99;
+				background-color:white;
+				box-sizing:border-box;
+				-webkit-overflow-scrolling: touch; 
+			}
+			.mobile-plans-menu{
+				position:fixed;
+				top:100px;
+				left:0;
+				width:100%;
+				height:auto;
+				transform:translateX(100%);
+				transition:transform 0.3s ease-in-out;
+				display:grid;
+				margin:1rem 0rem 2rem 0rem;
+				padding:0rem 1.5rem 0rem 1.5rem;
+				color:rgb(23, 43, 77);
+				overflow-y:auto;
+				overflow-x:hidden;
+				overscroll-behavior:contain;
+				z-index:99;
+				background-color:white;
+				box-sizing:border-box;
+			}
+			.mobile-features-menu>.meet-trello,.mobile-solutions-meet-trello,.mobile-resources-menu>.meet-trello{
+				color:rgb(23, 43, 77);
+				padding:1rem 1rem 2rem 1rem;
+				margin:1rem 0rem 1rem 0rem;
+				background-color:rgba(234, 230, 255, 0.4);
+			}
+			.mobile-features-menu>.meet-trello>p,.mobile-solutions-meet-trello>p,.Free-plan>p{
+				margin-bottom:2rem;
+			}
+			.mobile-features-menu>.meet-trello>a,.mobile-solutions-meet-trello>a{
+				color:rgb(23, 43, 77);
+				text-decoration:none;
+				border:1px solid rgb(23, 43, 77);
+				padding:1rem;
+				border-radius:0.3rem;
+				background-color:white;
+			}
+			.mobile-features-components,.mobile-solutions-components,.mobile-plans-components,.mobile-resources-components{
+				display:grid;
+				border-top:1px solid rgb(223, 225, 230);
+				border-bottom:1px solid rgb(223, 225, 230);
+			}
+			.mobile-features-components>a,.mobile-solutions-components>a,.mobile-plans-components>a,.mobile-resources-components>a{
+				grid-column:1/span3;
+				display:block;	
+			}
+			.mobile-features-components>a,.mobile-resources-components>a{
+				padding: 1.5rem 1rem 0rem 1.5rem;
+			}
+			.mobile-solutions-components>a,.mobile-plans-components>a{
+				padding:1rem;
+			}
+			.mobile-features-components>.head-item,.mobile-resources-components>.head-item{
+				padding: 2rem 1rem 0rem 1rem;
+			}
+			.mobile-solutions-components>.head-item{
+				padding:1rem;
+			}
+			.mobile-features-components>a,.mobile-solutions-components>a,.mobile-plans-components>a,.mobile-resources-components>a{
+				color:rgb(23, 43, 77);
+				text-decoration:none;
+				border-top:1px solid rgb(223, 225, 230);
+			}
+			.mobile-features-menu>.meet-trello>.Free-plan,.Free-plan-1{
+				margin:3rem 0rem 0rem 0rem;
+				background-color:rgba(234, 230, 255, 0.4);
+				padding:0rem 0rem 3rem 0rem;
+			}
+			.Free-plan-1{
+				padding:3rem 2rem;
+			}
+			a.tour-trello{
+				border:1px solid rgb(23, 43, 77);
+				padding:1rem;
+				border-radius:0.5rem;
+				color:rgb(23, 43, 77);
+				text-decoration:none;
+				background-color:white;
+			}
+			.mobile-solutions-components>.lastchild{
+				padding:1.5rem 1rem 1.5rem 0rem;
+			}
+			.mobile-features-menu.slide-left,.mobile-solutions-menu.slide-left,.mobile-plans-menu.slide-left,.mobile-resources-menu.slide-left{
+				transform:translateX(0%);
+			}
+			a.Pricing{
+				display:block;
+				color:black;
+				text-decoration:none;
+				padding:3rem 0rem 0rem 2rem;
+			}
+			}
+			.first_div_container{
+				border:1px solid none;
+				color:white;
+				background: url(https://images.ctfassets.net/rz1oowkt5gyp/7x92BS4HFqr74MNmDGtli0/5b537d821e70542aebfb18b2a2f0f275/hero-left.svg) left top / auto 100% no-repeat scroll padding-box border-box,
+						url(https://images.ctfassets.net/rz1oowkt5gyp/11wxtWNB47BwK1EsLUqEdE/466c5a15d4d79472e216b0eff6a286a5/hero-right.svg) right top / auto 100% no-repeat scroll padding-box border-box,
+						linear-gradient(0deg, rgb(0, 184, 217), rgb(0, 101, 255)) 0% 0% / auto repeat scroll padding-box border-box rgb(0, 101, 255);
+				margin:0rem 0rem 1rem 0rem;
+			}
+			.firstlink{
+				color:white;
+				font-size:1.5rem;
+				text-decoration:underline;
+				margin-top:2em;	
+			}
+			.link-first{
+				color:white;
+			}
+			.heading_in_firstdiv{
+				font-size:4rem
+			}
+			.para_in_firstdiv{
+				font-size:2.5rem;
+				text-align:center;		
+			}
+			.first_image_in_seconddiv{
+				width:100%;
+				height:auto;
+				padding:3rem 1rem 1rem;
+			}
+			.para_in_second_div{
+				font-size:2.5rem;
+				padding:3rem 1rem 1rem;
+			}
+			.sign-up-link{
+				border:1px solid blue;
+				padding:1em;
+				font-size:1.75rem;
+				background:blue;
+				color:white;
+				text-decoration:none;
+			}
+			.sign-up-link:hover{
+				color:white;
+			}
+			.sign-up-link-div{
+				padding:2rem 1rem 1rem;
+			}
+			.customer-brands{
+				border:1px solid rgb(244, 245, 247);
+				margin:3rem 0rem 0rem ;
+				background-color: rgb(244, 245, 247);
+			}
+			.heading-customer-brands{
+				margin:2rem 0rem 0rem;
+				font-size:1.75rem;
+				text-align:center;
+				letter-spacing:0.05em;
+			}
+			.customer-brand-logos{
+				max-width:100%;
+				height:auto;
+				margin:3rem;
+			}
+			.zoom-logo{
+				
+				height:80px;
+			}
+			.templates{
+				background:linear-gradient(0deg, rgb(230, 252, 255), rgb(255, 255, 255)) 0% 0% / auto repeat scroll padding-box border-box transparent;
+			}
+			.workspace-para{
+				font-size:2rem;
+				margin-bottom:1em;
+			}
+			.template-images{
+				padding:2rem;
+			}
+			#first-image-templateslide{
+				max-width:90%;
+				height:auto;
+				border-radius:10px;
+			}
+			.button-for-img{
+				margin-top:2em;
+				border-radius:10px;
+				border:1px solid black;
+				background-color:white;
+			}
+			.first-img-heading{
+				text-align:left;
+				text-style:uppercase;
+				color:blue;
+				text-decoration:underline;
+			}
+			.first-img-para{
+				font-size:1.75rem;
+				text-align:left;
+			}
+			#first-dot{
+				font-size:2rem;
+				cursor:pointer;
+			}
+			#img-2,#img-3{
+				display:block;
+			}
+			.insight-image,.auto-magic-img{
+				display:block;
+				margin:auto;
+				max-width:100%;
+				height:auto;
+			}
+			.insight-paragraph,.insight-link,.business-tool-paragraph,.business-tool-link{
+				margin:2rem 0rem 0rem;
+				font-size:2rem;
+			}
+			.insight-container,.business-tools{
+				margin-top:8rem;
+			}
+			.insight-txt{
+				padding:0rem 7rem 0rem 0rem;
+			}
+			.insight-link{
+				display:block;
+				margin:3rem 0rem 0rem 0rem;
+			}
+			.business-tool-image{
+				display:block;
+				margin:auto;
+				max-width:70%
+			}
+			.business-tools-heading,.business-tool-paragraph,.business-tool-link{
+				margin:2rem 0rem 0rem 8rem;
+			}
+			.business-tool-link{
+				display:block;
+				margin-top:3rem;
+			}
+			.auto-magic-img{
+				margin-top:3rem;
+			}
+			.auto-magic-paragraph{
+					margin-top:2rem;
+					font-size:2rem;
+			}
+			.auto-magic-link{
+				text-decoration:underline;
+				font-size:2rem;
+			}
+			.success-blog-para,.success-tip-heading{
+					padding:1rem 0rem 0rem 0rem;
+					text-align:center;
+			}
+			.success-tip-heading{
+				
+			}
+			.success-blog-para{
+					outline:1px solid none;
+					font-size:2rem;
+			}
+			.blogs{
+				padding:0px 1rem;
+			}
+			.blogsubheadings{
+				text-transform:uppercase;
+				font-size:1.75rem;
+				font-weight:bold;
+			}
+			.paragraph_blog{
+				font-size:2rem;
+			}
+			.linkinblog{
+				color:blue;
+				font-size:1.75rem;
+				text-decoration:underline;
+				text-transform:uppercase;
+				display:block;
+				margin-top:2rem;
+			}
+			.success-tips{
+				background-color:rgb(234, 230, 255);
+			}
+			hr{
+				border-top:1px solid rgb(211, 211, 211);
+			}
+			.blog-footer{
+				outline:1px solid black;
+				background: linear-gradient(270deg, rgb(64, 50, 148), rgb(23, 43, 77)) no-repeat;
+				color:white;
+				margin-top:2rem;
+				border-radius:1rem;
+				position:relative;
+			}
+			<!--.carousel_image_container{
+				border-top:20px;
+				border-top-style:solid;
+				height:350px;
+				border-radius:10px 10px 0px 0px;
+				border-top-color:blue;
+				
+			}
+			.image1_carousel{
+				text-align:center;
+				margin-top:30px;
+			}
+			.para_carousel_1{
+				font-size:20px;
+				padding:0px 100px 0px 100px;
+			}
+			.author_carousel{
+				font-size:20px;
+				padding:0px 100px 40px 100px;
+			}
+			.second_carousel_image_container{
+				border-top:20px;
+				border-top-style:solid;
+				border-top-color:blue;
+				height:350px;
+				border-radius:10px 10px 0px 0px;
+			}
+			.third_image_container{
+				border-top:20px;
+				border-top-style:solid;
+				border-top-color:blue;
+				height:350px;
+				border-radius:10px 10px 0px 0px;
+			}
+			.fourth_image_container{
+				border-top:20px;
+				border-top-style:solid;
+				border-top-color:blue;
+				height:350px;
+				border-radius:10px 10px 0px 0px;
+			}
+			.carousel-control.left{
+				background:none;
+				color:black;
+			}
+			.carousel-control.right{
+				background:none;
+				color:black;
+			}-->
+			.lastlinkinblog{
+				position:absolute;
+				text-decoration:none;
+				color:black;
+				top:2rem;
+				right:16rem;
+				background-color:white;
+				border:1px solid white;
+				padding:1.5rem;
+				border-radius:0.5rem;
+				font-size:1.5rem;
+			}
+			.prices-para{
+				font-size:2rem;
+				text-align:center;
+			}
+			.grid-container{
+				display:grid;
+				grid-template-columns:25% 25% 25% 25%;
+				margin:2rem 6rem;
+			}
+			.grid-container>div{
+				border-left:1px solid black;
+				border-right:1px solid black;
+				padding:1rem;
+			}
+			.item17,.item18,.item19,.item20{
+				padding-bottom:2rem;
+				border-bottom:1px solid black;
+			}
+			.item1,.item2,.item3,.item4{
+				border-top:1px solid black;
+				text-transform:uppercase;
+			}
+			.item5,.item6,.item7,.item8{
+				font-size:3rem;
+			}
+			.dollarsymbol{
+				font-size:1.5rem;
+			}
+			.pricescol12A{
+				margin-top:-1rem;
+				font-size:1.25rem;
+			}
+			.item9,.item10,.item11,.item12{
+				letter-spacing:0.1rem;
+				font-size:1.5rem;
+				padding:0rem 0rem 10rem;
+			}
+			.item13,.item14,.item15,.item16{
+				padding:0rem 0rem 3rem;
+			}
+			.signuplink{
+				border:1px solid rgb(0, 184, 217);
+				border-radius:0.5rem;
+				padding:1rem;
+				color:black;
+				text-decoration:none
+			}
+			.signuplink:hover{
+				background:rgb(230, 252, 255)
+			}
+			.footer{
+				background-color:rgb(101, 84, 192);
+				color:white;
+			}
+			.footer-signup-link{
+				color:black;
+				background-color:white;
+				text-decoration:none;
+				font-size:1.5rem;
+				border:1px solid white;
+				padding:1.5rem 1.5rem;
+				border-radius:1rem;
+				position:absolute;
+				top:0.5rem;
+				right:5rem;
+
+			}
+			.footer>div{
+				position:relative;
+				padding:0rem 2rem;
+			}
+			.footer > div>div{
+				
+				margin:2rem 0rem;
+			}
+			.footer-upper{
+				border:1px solid white;
+				padding:2rem;
+				color:white;
+				background-color:rgb(23, 43, 77);
+			}
+			.footer-upper>div>a{
+				text-decoration:none;
+			}
+			.footer-row-1{
+				border-bottom:1px solid rgb(80, 95, 121);
+			}
+			.footer-column{
+				padding:1rem;
+			}
+			.descript-footer{
+				font-size:1.20rem;
+			}
+			#language-list{
+				color:blue;
+				height:3rem;
+				width:15rem;
+				margin:2rem;
+			}
+			.language-form{
+				display:inline;
+				
+			}
+			a.policy{
+				font-size:1.2rem;
+				color:white;
+				padding:1rem;
+				text-decoration:none;
+			}
+			a.policy:hover{
+				color:white;
+			}
+			.descript-footer{
+				display:inline;
+			}
+			.fa-instagram,.fa-facebook-f,.fa-linkedin,.fa-twitter,.fa-youtube{
+				color:white;
+				padding:0.4rem 0.6rem;
+				border:2px solid white;
+				border-radius:1.5rem;
+			}
+			a.insta-link{
+				margin:0rem 1rem 0rem 0rem;
+			}
+			a.facebook-link,a.linkedin-link,a.twitter-link,a.youtube-link{
+				margin:0rem 1rem;
+			}
+			.social-media{
+				display:inline;
+				position:relative;
+				top:-4.5rem;
+				left:70rem;
+			}
+			a.insta-link,a.facebook-link,a.linkedin-link,a.twitter-link:hover{
+				color:white;
+			}
+			@media(max-width:991.5px)
+			{
+			.grid-container{
+				grid-template-columns:auto;
+				column-gap:1rem;
+				margin:2rem 4rem;}
+				.item1{margin-top:2rem;}
+				.item5{grid-area:2/1/3/2;}
+				.item9{grid-area:3/1/4/2;}
+				.item13{grid-area:4/1/5/2;}
+				.item17{grid-area:5/1/6/2;
+				margin-bottom:2rem;}
+				.item2{grid-area:6/1/7/2;}
+				.item6{grid-area:7/1/8/2;}
+				.item10{grid-area:8/1/9/2;}
+				.item14{grid-area:9/1/10/2;}
+				.item18{grid-area:10/1/11/2;
+				margin-bottom:2rem;}
+				.item3{grid-area:11/1/12/2;}
+				.item7{grid-area:12/1/13/2;}
+				.item11{grid-area:13/1/14/2;}
+				.item15{grid-area:14/1/15/2;}
+				.item19{grid-area:15/1/16/2;
+				margin-bottom:2rem;}
+				.item4{grid-area:16/1/17/2;}
+				.item8{grid-area:17/1/18/2;}
+				.item12{grid-area:18/1/19/2;}
+				.item16{grid-area:19/1/20/2;}
+				.item20{grid-area:20/1/21/2;
+				margin-bottom:2rem;}
+				.item9,.item10,.item11,.item12{
+					padding:0rem 0rem 2rem;
+				}
+				.tempaltes-heading{
+					outline:1px solid none;
+					font-size:2rem;
+					font-weight:bold;
+				}
+				.workspace-para{
+					outline:1px solid none;
+					font-size:1.6rem;
+				}
+				.button-for-img{
+					margin:0em 2em;
+				}
+				#img-2,#img-3{
+					display:none;
+				}
+				div.footer-column{
+					border-bottom:1px solid rgb(80, 95, 121);
+				}
+				.global-img{
+					max-width:100%;
+					margin:1rem;
+				}
+				a.policy{
+				display:block;
+				}
+				a.policy,.descript-footer{
+					diplay:block;
+				}
+				a.insta-link,a.facebook-link,a.linkedin-link,a.twitter-link,a.youtube-link{
+				margin:0rem 1rem;
+				}
+				.social-media{
+					display:block;
+					position:static;
+					margin:2rem 0rem;
+				}
+			}
+			@media(max-width:767.5px){
+				.para_in_firstdiv{
+					margin:0rem 2rem;
+					outline:1px solid none;
+				}
+				.sign-up-link-div{
+					margin:0rem 0rem 0rem 0rem;
+				}
+				.second-div-second-col{
+					text-align:center;
+				}
+				.customer-brand-logos{
+					display:block;
+					margin:3rem 0rem;
+					text-align:center;
+					}
+				.heading{
+					outline:1px solid none;
+					font-size:2rem;
+					font-weight:bold;
+					text-align:center;
+					margin:5rem 0rem 1rem 4rem;
+				}
+				.insight-paragraph,.insight-link{
+					outline:1px solid none;
+					text-align:center;
+					margin:0rem 5rem 0rem 7rem;
+				}
+				.insight-link,.business-tool-link,.auto-magic-link{
+				font-size:1.75rem;
+				}
+				.auto-magic-img{
+					margin-bottom:3rem;
+				}
+				.business-tools-heading,.auto-magic-heading,.success-tip-heading{
+					outline:1px solid none;
+					font-size:2rem;
+					font-weight:bold;
+					margin:1rem 0rem;
+					text-align:center;
+				}
+				.business-tool-link,.business-tool-paragraph,.auto-magic-paragraph
+				{
+					outline:1px solid none;
+					margin:auto;
+					text-align:center;					
+				}
+				.auto-magic-link{
+					display:block;
+					text-align:center;
+					margin-bottom:3rem;
+				}
+				.success-blog-para{
+					outline:1px solid none;
+					text-align:center;
+				}
+				.blogs{
+					margin-left:0rem;
+				}
+				.blog-footer{
+					height:20rem;
+				}
+				.lastlinkinblog{
+					position:absolute;
+					top:13rem;
+					right:16rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+	<!---Navbar starts here--->
+		<nav class="navbar navbar-light bg-light">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <button id="baricon" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                       
+			  </button>
+			  <a class="navbar-brand" href="index.html"><b>Trello</b></a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+			  <ul class="nav navbar-nav ">
+				<li class="nav-item dropdown" style="position:initial;">
+				  <a class="nav-link dropdown-toggle" href="#" id="features-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Features&nbsp;<span class="caret"></span></a>
+					<div class="dropdown-menu" aria-labelledby="features-dropdown" style="width:100%;">
+						<div class="features-menu">
+							<div class="features-components">
+							<div class="head-item">
+								<h4>Explore the features that help your team succeed</h4>
+							</div>
+							<a href="Trello-views-responsive-1.html"><div class="Views">
+								<h5><b>Views</b></h5>
+								<p>View your team’s projects from every angle.</p>
+							</div></a>
+							<a href="Trello-views-responsive-1.html"><div class="Automation">
+								<h5><b>Automation</b></h5>
+								<p>Automate tasks and workflows with Butler automation.</p>
+							</div></a>
+							<a href="Trello-views-responsive-1.html"><div class="power-ups">
+								<h5><b>Power-Ups</b></h5>
+								<p>Power up your teams by linking their favorite tools with Trello plugins.</p>
+							</div></a>
+							<a href="Trello-views-responsive-1.html"><div class="Templates">
+								<h5><b>Templates</b></h5>
+								<p>Give your team a blueprint for success with easy-to-use templates from industry leaders and the Trello community.</p>
+							</div></a>
+							<a href="Trello-views-responsive-1.html"><div class="Integerations">
+								<h5><b>Integerations</b></h5>
+								<p>Find the apps your team is already using or discover new ways to get work done in Trello.</p>
+							</div></a>
+							</div>
+							<div class="meet-trello">
+								<h4>Meet Trello</h4>
+								<p>Trello makes it easy for your team to get work done. No matter the project, workflow, or type of team, Trello can help keep things organized.
+								It’s simple – sign-up, create a board, and you’re off! Productivity awaits.</p>
+								<a href="#">Check out Trello</a>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="nav-item dropdown" style="position:initial;">
+				  <a class="nav-link dropdown-toggle" href="#" id="features-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Solutions&nbsp;<span class="caret"></span></a>
+					<div class="dropdown-menu" aria-labelledby="features-dropdown" style="width:100%;">
+						<div class="solutions-menu">
+							<div class="solutions-components">
+							<div class="head-item">
+								<h4>Take a page out of these pre-built Trello playbooks designed for all teams</h4>
+							</div>
+							<a href="Trello-startups-responsive.html"><div class="Views">
+								<h5><b>Marketing teams</b></h5>
+								<p>Whether launching a new product, campaign, or creating content, 
+								Trello helps marketing teams succeed.</p>
+							</div></a>
+							<a href="Trello-startups-responsive.html"><div class="Automation">
+								<h5><b>Product management</b></h5>
+								<p>Use Trello’s management boards and roadmap features to simplify complex projects and processes.</p>
+							</div></a>
+							<a href="Trello-startups-responsive.html"><div class="power-ups">
+								<h5><b>Engineering teams</b></h5>
+								<p>Ship more code, faster, and give your developers the freedom to be more agile with Trello.</p>
+							</div></a>
+							<a href="Trello-startups-responsive.html"><div class="Templates">
+								<h5><b>Design teams</b></h5>
+								<p>Empower your design teams by using Trello to streamline creative requests and promote more fluid cross-team collaboration.</p>
+							</div></a>
+							<a href="Trello-startups-responsive.html"><div class="Integerations">
+								<h5><b>Startups</b></h5>
+								<p>From hitting revenue goals to managing workflows, small businesses thrive with Trello.</p>
+							</div></a>
+							<a href="Trello-startups-responsive.html"><div class="remote-teams">
+								<h5><b>Remote teams</b></h5>
+								<p>Keep your remote team connected and motivated, no matter where they’re 
+								located around the world.</p>
+							</div>
+							</a>
+							<a href="#">See all use cases&nbsp;&nbsp;<span class="r-arrow">&rarr;</span></a>
+							</div>
+							<div class="solutions-meet-trello">
+								<h4>Our product in action</h4>
+								<br/>
+								<a href="#"><h5><b>Use case: Task management</b></h5>
+								<p>Track progress of tasks in one convenient place with a visual layout that adds ‘ta-da’ to your to-do’s.</p></a>
+								<br/>
+								<a href="#"><h5><b>Use case: Resource hub</b></h5>
+								<p>Save hours when you give teams a well-designed hub to find information easily and quickly.</p></a>
+								<br/>
+								<a href="#"><h5><b>Use case: Project management</b></h5>
+								<p>Keep projects organized, deadlines on track, and teammates aligned with Trello.</p></a>
+								<a href="#">See all use cases&nbsp;&nbsp;<span class="r-arrow">&rarr;</span></a>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="nav-item dropdown" style="position:initial;">
+				  <a class="nav-link dropdown-toggle" href="#" id="features-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plans&nbsp;<span class="caret"></span></a>
+					<div class="dropdown-menu" aria-labelledby="features-dropdown" style="width:100%;">
+						<div class="plans-menu">
+							<div class="plans-components">
+							<a href="Trello-standard-responsive.html"><div class="Views">
+								<h5><b>Standard</b></h5>
+								<p>For teams that need to manage more work and scale collaboration.</p>
+							</div></a>
+							<a href="Trello-standard-responsive.html"><div class="Automation">
+								<h5><b>Premium</b></h5>
+								<p>Best for teams up to 100 that need to track multiple projects and visualize work in a variety of ways.</p>
+							</div></a>
+							<a href="Trello-standard-responsive.html"><div class="power-ups">
+								<h5><b>Enterprise</b></h5>
+								<p>Everything your enterprise teams and admins need to manage projects.</p>
+							</div></a>
+							<a href="Trello-standard-responsive.html" class="Free-plan">
+							<div>
+								<h5><b>Free Plan</b></h5>
+								<p>For individuals or small teams looking to keep work organized.</p>
+							</div>
+							<a href="#" class="tour-trello">Take a tour of Trello</a>
+							</a>
+							</div>
+							<div class="meet-trello">
+								<h4>Compare plans & pricing</h4>
+								<p>Whether you’re a team of 2 or 2,000, Trello’s flexible pricing model means
+								you only pay for what you need.</p>
+								<a>View Trello pricig</a>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="nav-item dropdown" style="position:initial;">
+				  <a class="nav-link dropdown-toggle" href="Trello-pricing-responsive.html" aria-current="page"  role="button">Pricing&nbsp;</span></a>
+				<li class="nav-item dropdown" style="position:initial;">
+				  <a class="nav-link dropdown-toggle" href="#" id="features-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resources&nbsp;<span class="caret"></span></a>
+					<div class="dropdown-menu" aria-labelledby="features-dropdown" style="width:100%;">
+						<div class="features-menu">
+							<div class="features-components">
+							<div class="head-item">
+								<h4>Learn & Connect</h4>
+							</div>
+							<a href="trello-resources-responsive.html"><div class="Views">
+								<h5><b>Trello guide</b></h5>
+								<p>Our easy to follow workflow guide will take you from project set-up to Trello expert in no time.</p>
+							</div></a>
+							<a href="trello-resources-responsive.html"><div class="Automation">
+								<h5><b>Remote work guide</b></h5>
+								<p>The complete guide to setting up your team for remote work success.</p>
+							</div></a>
+							<a href="trello-resources-responsive.html"><div class="power-ups">
+								<h5><b>Webinars</b></h5>
+								<p>Enjoy our free Trello webinars and become a productivity professional.</p>
+							</div></a>
+							<a href="trello-resources-responsive.html"><div class="Templates">
+								<h5><b>Customer stories</b></h5>
+								<p>See how businesses have adopted Trello as a vital part of their workflow.</p>
+							</div></a>
+							<a href="trello-resources-responsive.html"><div class="Integerations">
+								<h5><b>Developers</b></h5>
+								<p>The sky's the limit in what you can deliver to Trello users in your Power-Up!</p>
+							</div></a>
+							<a href="trello-resources-responsive.html"><div>
+								<h5><b>Help resources</b></h5>
+								<p>Need help? Articles and FAQs to get you unstuck.</p>
+							</div></a>
+							</div>
+							<div class="meet-trello">
+								<h4>Helping teams work better, together</h4>
+								<p>Discover Trello use cases, productivity tips, best practices for team collaboration,
+								and expert remote work advice.</p>
+								<a>Check out the Trello blog</a>
+							</div>
+						</div>
+					</div>
+				</li>
+			  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+				<li class="free-link"><a href="Trello-login-Page.html">Get Trello for free</a></li>
+				<li class="login"><a href="Trello-login-Page.html"> Login</a></li>
+			  </ul>
+			  </div>
+			</div>
+		  </div>
+		</nav>
+		<div class="mobile-screen-collapsible-navbar">
+			<a href="index.html" class="mobile-trello-logo" style="color:black;font-size:3rem;text-decoration:none;position:relative;top:30px;left:5%">Trello</a>
+			<h4 class="back-button"><b><span>&lt;</span>&nbsp;Back</b></h4>
+			<i class="fa fa-solid fa-bars"></i>
+		</div>
+		<div class="small-screen-menu">
+				<div class="Features">Features <span class="gt-link">&gt;</span> </div>
+				<div class="Solutions">Solutions <span class="gt-link">&gt;</span></div>
+				<div class="Plans">Plans <span class="gt-link">&gt;</span></div>
+				<a href="Trello-pricing-responsive.html" class="Pricing"><div id="4">Pricing</div></a>
+				<div class="Resources">Resources <span class="gt-link">&gt;</span></div>
+				<div><a href="Trello-login-Page.html">Get Trello for free</a></div>
+				<div><a href="Trello-login-Page.html"> Login</a></div>
+		</div>
+		<div class="mobile-features-menu">
+			<div class="mobile-features-components">
+				<div class="head-item">
+					<h4>Explore the features that help your team succeed</h4>
+				</div>
+				<a href="Trello-views-responsive-1.html"><div>
+					<h5><b>Views</b></h5>
+					<p>View your team’s projects from every angle.</p>
+				</div></a>
+				<a href="Trello-views-responsive-1.html"><div class="Automation">
+					<h5><b>Automation</b></h5>
+					<p>Automate tasks and workflows with Butler automation.</p>
+				</div></a>
+				<a href="Trello-views-responsive-1.html"><div class="power-ups">
+					<h5><b>Power-Ups</b></h5>
+					<p>Power up your teams by linking their favorite tools with Trello plugins.</p>
+				</div></a>
+				<a href="Trello-views-responsive-1.html"><div class="Templates">
+					<h5><b>Templates</b></h5>
+					<p>Give your team a blueprint for success with easy-to-use templates from industry leaders and the Trello community.</p>
+				</div></a>
+				<a href="Trello-views-responsive-1.html"><div class="Integerations">
+					<h5><b>Integerations</b></h5>
+					<p>Find the apps your team is already using or discover new ways to get work done in Trello.</p>
+				</div></a>
+			</div>
+			<div class="meet-trello">
+			<h4>Meet Trello</h4>
+			<p>Trello makes it easy for your team to get work done. No matter the project, workflow, or type of team, Trello can help keep things organized.
+			It’s simple – sign-up, create a board, and you’re off! Productivity awaits.</p>
+			<a href="#">Check out Trello</a>
+			</div>				
+		</div>
+		<div class="mobile-solutions-menu-container">
+		<div class="mobile-solutions-menu">
+			<div class="mobile-solutions-components">
+				<div class="head-item">
+					<h4>Take a page out of these pre-built Trello playbooks designed for all teams</h4>
+				</div>
+				<a href="Trello-startups-responsive.html"><div class="Views">
+					<h5><b>Marketing teams</b></h5>
+					<p>Whether launching a new product, campaign, or creating content, 
+					Trello helps marketing teams succeed.</p>
+				</div></a>
+				<a href="Trello-startups-responsive.html"><div class="Automation">
+					<h5><b>Product management</b></h5>
+					<p>Use Trello’s management boards and roadmap features to simplify complex projects and processes.</p>
+				</div></a>
+				<a href="Trello-startups-responsive.html"><div class="power-ups">
+					<h5><b>Engineering teams</b></h5>
+					<p>Ship more code, faster, and give your developers the freedom to be more agile with Trello.</p>
+				</div></a>
+				<a href="Trello-startups-responsive.html"><div class="Templates">
+					<h5><b>Design teams</b></h5>
+					<p>Empower your design teams by using Trello to streamline creative requests and promote more fluid cross-team collaboration.</p>
+				</div></a>
+				<a href="Trello-startups-responsive.html"><div class="Integerations">
+					<h5><b>Startups</b></h5>
+					<p>From hitting revenue goals to managing workflows, small businesses thrive with Trello.</p>
+				</div></a>
+				<a href="Trello-startups-responsive.html"><div class="remote-teams">
+					<h5><b>Remote teams</b></h5>
+					<p>Keep your remote team connected and motivated, no matter where they’re 
+					located around the world.</p>
+				</div></a>
+				<a href="#"class="lastchild">See all use cases&nbsp;&nbsp;<span class="r-arrow">&rarr;</span></a>
+				</div>
+				<div class="mobile-solutions-meet-trello">
+					<h4>Our product in action</h4>
+					<p>Read though our use cases to make the most of Trello on your team.</p>
+					<a href="#">See all use cases&nbsp;&nbsp;<span class="r-arrow">&rarr;</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="mobile-plans-menu">
+			<div class="mobile-plans-components">
+				<a href="Trello-standard-responsive.html"><div>
+				<h5><b>Standard</b></h5>
+				<p>For teams that need to manage more work and scale collaboration.</p>
+			</div></a>						
+				<a href="Trello-standard-responsive.html"><div>
+				<h5><b>Premium</b></h5>
+				<p>Best for teams up to 100 that need to track multiple projects and visualize work in a variety of ways.</p>
+			</div></a>
+			<a href="Trello-standard-responsive.html"><div>
+				<h5><b>Enterprise</b></h5>
+				<p>Everything your enterprise teams and admins need to manage projects.</p>
+			</div></a>
+			</div>
+			<div class="meet-trello">
+				<div class="Free-plan">
+				<h4>Free Plan</h4>
+				<p>For individuals or small teams looking to keep work organized.
+				</p>
+				<a href="#" class="tour-trello">Take a tour of Trello</a>
+				</div>
+			</div>
+			<div class="Free-plan-1">
+				<h4>Compare plans & pricing</h4>
+				<p>Whether you’re a team of 2 or 2,000, Trello’s flexible pricing model means
+				you only pay for what you need.</p>
+				<a href="#" class="tour-trello">View Trello pricig</a>
+			</div>
+		</div>
+		<div class="mobile-resources-menu">
+			<div class="mobile-resources-components">
+				<div class="head-item">
+					<h4>Learn & Connect</h4>
+				</div>
+				<a href="trello-resources-responsive.html"><div class="Views">
+					<h5><b>Trello guide</b></h5>
+					<p>Our easy to follow workflow guide will take you from project set-up to Trello expert in no time.</p>
+				</div></a>
+				<a href="trello-resources-responsive.html"><div class="Automation">
+					<h5><b>Remote work guide</b></h5>
+					<p>The complete guide to setting up your team for remote work success.</p>
+				</div></a>
+				<a href="trello-resources-responsive.html"><div class="power-ups">
+					<h5><b>Webinars</b></h5>
+					<p>Enjoy our free Trello webinars and become a productivity professional.</p>
+				</div></a>
+				<a href="trello-resources-responsive.html"><div class="Templates">
+					<h5><b>Customer stories</b></h5>
+					<p>See how businesses have adopted Trello as a vital part of their workflow.</p>
+				</div></a>
+				<a href="trello-resources-responsive.html"><div class="Integerations">
+					<h5><b>Developers</b></h5>
+					<p>The sky's the limit in what you can deliver to Trello users in your Power-Up!</p>
+				</div></a>
+				<a href="trello-resources-responsive.html"><div>
+					<h5><b>Help resources</b></h5>
+					<p>Need help? Articles and FAQs to get you unstuck.</p>
+				</div></a>
+			</div>
+			<div class="meet-trello">
+				<h4>Helping teams work better, together</h4>
+				<p>Discover Trello use cases, productivity tips, best practices for team collaboration,
+				and expert remote work advice.</p>
+				<a>Check out the Trello blog</a>
+			</div>
+		</div>
+		<!---Navbar Ends Here--->
+		<div class="container-fluid first_div_container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<center><div  class="firstlink" ><a class="link-first"href="#">< Go back to Team Solutions</a></div>
+					<h1 class="heading_in_firstdiv"><b>Trello For Startups</b></h1></center>
+					<p class="para_in_firstdiv">From hiring your first employee to hitting your revenue goals,<br/> discover how to thrive as a startup with Trello.</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+					<img class="first_image_in_seconddiv" src="https://images.ctfassets.net/rz1oowkt5gyp/36PnpdmXvcwbAeIrYlONqB/41927205eb9a3cdcfb08320bc95dd806/Card4_2x.png?w=704&fm=webp">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 second-div-second-col">
+					<p class="para_in_second_div">Trello’s boards, lists, and cards enable teams to go from ideas to action in seconds. 
+					Visual and easy-to-use, Trello helps teams bring projects to life and keep them moving forward.</p>
+					<div class="sign-up-link-div"><a style="border-radius:5px;text-decoration:none;"class="sign-up-link" href="#">Sign-up It's free</a></div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid customer-brands">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p class="heading-customer-brands">Join over 2,000,000 teams worldwide who are using Trello to get more done.</p>
+				<center><img class="customer-brand-logos" src="https://images.ctfassets.net/rz1oowkt5gyp/7nR3kQlx8IP5mfCCBTatsy/0b3952a6be3ebb10116d62aa93be7bbb/coinbase.svg">
+				<img  class="customer-brand-logos" src="https://images.ctfassets.net/rz1oowkt5gyp/6VwRn7PI4zrZo84Uoa8rnt/b0ae3da34916a3ff02d26e2120efe9b8/johnDeere.svg">
+				<img class="customer-brand-logos" src="https://images.ctfassets.net/rz1oowkt5gyp/5KdQPApAFJpLMv9AntiNLk/530cef2a4b56ad758c1e91fad5c3e7ac/Grand-Hyatt.svg"><center/>
+				<img class="customer-brand-logos" src="https://images.ctfassets.net/rz1oowkt5gyp/1zdBcYqeqkDsLUfggfKFRO/a732e0001ca5153ef7195eea63ff6a3b/Visa.svg">
+				<img class="zoom-logo" src="https://images.ctfassets.net/rz1oowkt5gyp/2Im844Kon73pvCD2ljoxeL/4073e041eb8eb961a0f9505965dec09b/Zoom.png?w=324&fm=webp">
+			</div>
+		</div>
+		<div class="templates">
+			<center><h1 class="tempaltes-heading">Workspaces For Growing Businesses</h1>
+			<p class="workspace-para">Kick your business off on the right foot by working within pre-built 
+			templates<br/> that your small but mighty team can adapt and scale as the company grows.</p>
+			<a style="font-size:2rem;text-decoration:underline;"href="#">Explore all business templates</a><center/>
+			<div class="container">
+				<div class="row">
+				<div class="col-md-8 col-md-push-4 col-lg-8 template-images">
+					<img  id="first-image-templateslide" src="https://images.ctfassets.net/rz1oowkt5gyp/2yHUFCD4qxtmocohjfePS4/1f3f1092336662ad5e08662d6150837e/Startup-CompanyOverview.jpg" width="100%">
+				</div>
+				<div class="col-md-4 col-md-pull-8 col-lg-4 template-slides">
+					<button id="img-1"class="button-for-img" onclick="myfun1()">
+						<h5 class="first-img-heading"><b>COMPANY OVERVIEW</b></h5>
+						<p class="first-img-para">Give employees a high-level overview of what's happening throughout 
+						your growing company, with the ability to find details about teams, projects, and resources.</p>
+					</button>
+					<button id="img-2" class="button-for-img" onclick="myfun2()">
+						<h5 class="first-img-heading"><b>TEAM GOAL SETTING</b></h5>
+						<p class="first-img-para">Store documents, tips, presentations, answers to common
+						questions all in one place, and easily break down top-level goals into smaller, achievable tasks.</p>
+					</button>
+					<button id="img-3" class="button-for-img" onclick="myfun3()">
+						<h5 class="first-img-heading"><b>COMPANY MEETINGS</b></h5>
+						<p class="first-img-para">Allow employees to ask, questions, discuss what’s on their minds, and share progress on initiatives.
+						Company leaders can discuss priorities, promote cross-team collaboration, and keep transparency top of mind.</p>
+					</button>
+				</div>
+				<div class="template-indicators">
+					<span id="first-dot" onclick="template1()">&#9679;</span>
+					<span id="first-dot" onclick="template2()">&#9679;</span>
+					<span id="first-dot" onclick="template3()">&#9679;</span>
+				</div>
+				</div>
+			</div>
+		</div>
+		<div class="container insight-container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-push-6 col-md-6 col-lg-6">
+					<img class="insight-image" src="https://images.ctfassets.net/rz1oowkt5gyp/5fGmbGQU0lwsIbauhq9DQ2/f6936ca0d10668e1503f1cd863aca0da/Dashboard_View_Illo_5.svg">
+				</div>
+				<div class="col-sm-6 col-sm-pull-6 col-md-6 col-lg-6 insight-txt">
+					<h1 class="heading">Gain actionable insights and key metrics.</h1>
+					<p class="insight-paragraph">Help your start-up scale (without the growing pains) by making informed data-driven decisions using Dashboard view.
+					Get the most of Trello's different views.</p>
+					<a class="insight-link" style="text-decoration:underline;"href="#">Learn more about Trello views</a>
+				</div>
+			</div>
+		</div>
+		<div class="container business-tools">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<img class="business-tool-image" src="https://images.ctfassets.net/rz1oowkt5gyp/3MokscsDlSKIcwTWWVnPRW/3144b270085b9cc4d333a40a03ad8b4f/Startup_Playbook_2x.png?w=740&fm=webp">
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<h1 class="business-tools-heading">Power-Up Your New Business</h1>
+					<p class="business-tool-paragraph">All businesses could use some extra support. Allow these tools and integrations, like Confluence, Jira, and Slack to propel 
+					your business forward with easier, more effective collaboration.</p>
+					<a class="business-tool-link"style="text-decoration:underline;"href="#">Explore 150+ Power-Ups</a>
+				</div>
+			</div>
+		</div>
+		<div class="container auto-magic">
+			<div class="row">
+				<div class="col-sm-6 col-sm-push-6 col-md-6 col-lg-6">
+					<img class="auto-magic-img" src="https://images.ctfassets.net/rz1oowkt5gyp/53ZmkLWjldHmiQO8BhOYwh/f13a27886a208118c75f7f8c34f5f5d2/Butler.svg">
+				</div>
+				<div class="col-sm-6 col-sm-pull-6 col-md-6 col-lg-6">
+					<h1 class="auto-magic-heading">Move Work Forward, Auto-magically</h1>
+					<p class="auto-magic-paragraph">Trello’s built-in automation makes it easy to automate the repetitive, everyday tasks
+					that keep your team from focusing on the work that matters most.</p>
+					<a class="auto-magic-link" href="#">Let the robots do the work</a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid success-tips">
+			<h1 class="success-tip-heading">Resources For Startup Success</h1>
+			<p class="success-blog-para">Whether you’re looking for quick tips or thorough advice, 
+			use these resources<br/> to launch, run, and grow your business with more ease:</p>
+			<div class="container blogs">
+				<h5 class="blogsubheadings">6 Essential Trello Templates You Need To Run A Business [Blog Post]</h5>
+				<p class="paragraph_blog">From HR to IT, to every department and acronym in between, there is a Trello board that helps businesses run smoother.
+				Explore six essential templates that, at one point or another, are useful for every member of your company.
+				<a class="linkinblog" href="#"><b>Read More</b></a>
+				<hr>
+				<h5 class="blogsubheadings">How To Keep Your Small Business Motivated—No Matter What [Blog Post]</h5>
+				<p class="paragraph_blog">NY Times bestselling author, business thought leader, and acclaimed B-School founder, Marie Forleo, 
+				uncover how to keep motivation high and teams ready for action through up and down.</p>
+				<a class="linkinblog" href="#"><b>Read More</b></a>
+				<hr/>
+				<h5 class="blogsubheadings">How To Use Trello And Indeed To Hire A Dream Team [Blog Post]</h5>
+				<p class="paragraph_blog">If your company is growing fast and hiring fast, unleash the power of using Trello and Indeed in-tandem as an easy, light-weight recruiting management
+				tool to keep all your ducks (and candidates) in a row.</p>
+				<a class="linkinblog" href="#"><b>Read More</b></a>
+			</div>
+			<div class="container blog-footer">
+				<h5 class="blogsubheadings">NOW AVAILABLE</h5>
+				<p class="paragraph_blog">A 14 Day Free Trial of Premium!</p>
+				<p style="font-size:1.5rem">Get unlimited boards, Trello views, and limitless automation, plus a ton more.</p>
+				<a class="lastlinkinblog" href="#">Try it today</a>
+			</div>
+		</div>
+	
+		<div class="container">
+			<h1 class="prices-heading" style="text-align:center">Trello Your Way</h1>
+			<p class="prices-para">Ready to get your team up and running? Try the business <br/>tool so easy to use, your team can’t help but collaborate.</p>
+			<center><a style="font-size:2rem;text-decoration:underline;" href="#">Learn more about our pricing and plans</a></center>
+		</div>
+		<div class="grid-container">
+			<div class="item1">
+				<h5><b>Free</b></h5>
+			</div>
+			<div class="item2">
+				<h5><b>Standard</b></h5>
+			</div>
+			<div class="item3">
+				<h5><b>Premium</b></h5>
+			</div>
+			<div class="item4">
+				<h5><b>Enterprise</b></h5>
+			</div>
+			<div class="item5">
+				<p><span class="dollarsymbol">$</span>0<span class="dollarsymbol">USD</span><p>
+				<p class="pricescol12A">Free for your whole team</p>
+			</div>
+			<div class="item6">
+				<p><span class="dollarsymbol">$</span>5<span class="dollarsymbol">USD</span><p>
+				<p class="pricescol12A">Per user/month if billed annually ($6 billed monthly)</p>
+			</div>
+			<div class="item7">
+				<p><span class="dollarsymbol">$</span>10<span class="dollarsymbol">USD</span><p>
+				<p class="pricescol12A">Per user/month if billed annually ($12.50 billed monthly)</p>
+			</div>
+			<div class="item8">
+				<p><span class="dollarsymbol">$</span>17.50<span class="dollarsymbol">USD</span><p>
+				<p class="pricescol12A">Per user/month - billed annually ($210.00 annual price per user)</p>
+			</div>
+			<div class="item9">
+				<p>For individuals or teams looking to organize any project.</p>
+			</div>
+			<div class="item10">
+				<p>For small teams that need to manage work and scale collaboration.</p>
+			</div>
+			<div class="item11">
+				<p>For teams that need to track and visualize multiple projects in several ways, including boards, timelines, calendars, etc.</p>
+			</div>
+			<div class="item12">
+				<p>For organizations that need to connect work across teams with more security and controls.</p>
+			</div>
+			<div class="item13">
+				<a class="signuplink" href="#" class="signuplink">Get Started</a>
+			</div>
+			<div class="item14">
+				<a class="signuplink" href="#">Signup now</a>
+			</div>
+			<div class="item15">
+				<a class="signuplink"href="#">Try for free</a>
+			</div>
+			<div class="item16">
+				<a class="signuplink" href="#">Contact sales</a>
+			</div>
+			<div class="item17">
+			</div>
+			<div class="item18">
+				<a  href="#">Learn more about standard</a>
+			</div>
+			<div class="item19">
+				<a href="#">Learn more about premium</a>
+			</div>
+			<div class="item20">
+				<a href="#">Learn more about Enterprise</a>
+			</div>
+		</div>
+		<div class="container-fluid footer">
+			<div class="row">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+					<p><b>Well, what are you waiting for?</b></p>
+					<h4>Head over to your boards and start getting things done!</h4>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 link-in-footer"> 
+					<a class="footer-signup-link" href="#">Sign Up</a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid footer-upper">
+			<div class="row footer-row-1">
+				<div class="col-sm-none col-md-1 col-lg-1">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 footer-column" >
+				<h1>Trello</h1>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 footer-column" >
+					<a href="#" style="color:white;text-decoration:none">
+					<p class="heading-footer">About Trello</p>
+					<p class="descript-footer">What's behind the boards</p>
+					<a/>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 footer-column" >
+					<a href="#" style="color:white;text-decoration:none;">
+					<p class="heading-footer">Jobs</p>
+					<p class="descript-footer">Learn about open roles on the Trello team</p>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 footer-column" >
+					<a href="#" style="color:white;text-decoration:none;">
+					<p class="heading-footer">Apps</p>
+					<p class="descript-footer">Download the Trello App for your Desktop or Mobile devices</p>
+					</a>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 footer-column" >
+					<a href="#"style="color:white;text-decoration:none;">
+					<p class="heading-footer">Contact us<p>
+					<p class="descript-footer">Need Anything?Get in touch and we can help</p>
+					</a>
+				</div>
+				<div class="col-xs-none col-md-1 col-lg-1">
+				</div>
+			</div>
+			<img class="global-img" src="data:image/svg+xml,%3Csvg fill='%23ffffff' width='25px' height='24px' viewBox='0 0 25 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='M2.33514634,13.0909091 C2.80456741,17.1674997 5.87382928,20.4918664 9.91593939,21.5020963 C8.18760918,19.0069673 7.13798566,16.119686 6.87807529,13.0909091 L2.33514634,13.0909091 Z M2.33514634,10.9090909 L6.8751035,10.9090909 C7.12988231,7.89470494 8.18079774,5.00118821 9.91557751,2.49799419 C5.87364609,3.50833206 2.8045534,6.83262197 2.33514634,10.9090909 Z M22.6648537,10.9090909 C22.1954326,6.83250032 19.1261707,3.50813364 15.0840606,2.49790374 C16.8123908,4.99303266 17.8620143,7.88031403 18.1219247,10.9090909 L22.6648537,10.9090909 Z M22.6648537,13.0909091 L18.1248965,13.0909091 C17.8701177,16.1052951 16.8192023,18.9988118 15.0844225,21.5020058 C19.1263539,20.4916679 22.1954466,17.167378 22.6648537,13.0909091 Z M9.15315078,10.9090909 L15.843646,10.9090909 C15.5581939,7.94925479 14.3973512,5.12935736 12.4999751,2.78265622 C10.595448,5.13778492 9.43302782,7.96652031 9.15315078,10.9090909 Z M15.8468492,13.0909091 L9.15635402,13.0909091 C9.44180608,16.0507452 10.6026488,18.8706426 12.5000249,21.2173438 C14.404552,18.8622151 15.5669722,16.0334797 15.8468492,13.0909091 Z M12.5,24 C5.59644063,24 0,18.627417 0,12 C0,5.372583 5.59644063,0 12.5,0 C19.4035594,0 25,5.372583 25,12 C25,18.627417 19.4035594,24 12.5,24 Z' %3E%3C/path%3E%3C/svg%3E%0A">
+			<form class="language-form">
+				<select id="language-list" name="language">
+					<option value="cestina">Cestina</option>
+					<option value="deutsch">Deutsch</option>
+					<option value="espanol">Espanol</option>
+					<option value="english" selected>English</option>
+					<option value="francais">Francais</option>
+					<option value="italiano">Italiano</option>
+					<option value="magyar">Magyar</option>
+				</select>
+			</form>
+			<a class="policy" href="#">Privacy Policy</a>
+			<a class="policy" href="#">Terms</a>
+			<p class="descript-footer" style="padding:1rem">Copyright © 2024 Atlassia</p>
+			<br/>
+			<div class="social-media"><a class="insta-link" href="#"><i class="fa fa-brands fa-instagram"></i></a>
+			<a class="facebook-link" href="#"><i class="fa fa-brands fa-facebook-f"></i></a>
+			<a class="linkedin-link" href="#"><i class="fa fa-brands fa-linkedin"></i></a>
+			<a class="twitter-link" href="#"><i class="fa fa-brands fa-twitter"></i></a>
+			<a class="youtube-link" href="#"><i class="fa fa-brands fa-youtube"></i></a></div>
+		</div>
+		<script>
+			function myfun1()
+			{
+				document.getElementById("first-image-templateslide").src="https://images.ctfassets.net/rz1oowkt5gyp/2yHUFCD4qxtmocohjfePS4/1f3f1092336662ad5e08662d6150837e/Startup-CompanyOverview.jpg";
+			}
+			function myfun2()
+			{
+				document.getElementById("first-image-templateslide").src="https://images.ctfassets.net/rz1oowkt5gyp/jVGrFIz7Miro5HaCHdMFS/dd9399ec88ad3c82729de8a6fcb9cb56/Startup-GoalSetting.jpg?w=1140&fm=webp";
+			}
+			function myfun3()
+			{
+				document.getElementById("first-image-templateslide").src="https://images.ctfassets.net/rz1oowkt5gyp/6tlfvrEOv0uc7pTtB8zDZp/b2b76c62b1aa166f0596529742713ebb/Startup-CompanyMeetings.jpg?w=1140&fm=webp";
+			}
+			function template1(){
+				document.getElementById("img-1").innerHTML=document.getElementById("img-1").innerHTML
+				myfun1();
+			}
+			function template2(){
+				document.getElementById("img-1").innerHTML=document.getElementById("img-2").innerHTML
+				myfun2();
+			}
+			function template3(){
+				document.getElementById("img-1").innerHTML=document.getElementById("img-3").innerHTML
+				myfun3();
+			}
+			const hamburgerMenu=document.querySelector(".fa-bars");
+			const menuList=document.querySelector(".small-screen-menu");
+			const feaMenuButton=document.querySelector(".Features");
+			const solMenuButton=document.querySelector(".Solutions");
+			const planMenuButton=document.querySelector(".Plans");
+			const resourceMenuButton=document.querySelector(".Resources");
+			const featuresitems=document.querySelector(".mobile-features-menu");
+			const solitems=document.querySelector(".mobile-solutions-menu");
+			const planitems=document.querySelector(".mobile-plans-menu");
+			const resourceitems=document.querySelector(".mobile-resources-menu");
+			const backButton=document.querySelector(".back-button");
+			const trello=document.querySelector(".mobile-trello-logo");
+			const body=document.getElementsByTagName("BODY")[0];
+			const html=document.getElementsByTagName("HTML")[0];
+			function buttonclicked(){
+				console.log("button is clicked");
+				menuList.classList.toggle("active");
+				featuresitems.classList.remove("slide-left");
+				solitems.classList.remove("slide-left");
+				planitems.classList.remove("slide-left");
+				resourceitems.classList.remove("slide-left");
+			}
+			const subMenuClicked=(event)=>{
+				console.log("feaMenu Button is clicked");
+				menuList.classList.remove("active");
+				featuresitems.classList.add("slide-left");
+				trello.style.opacity="0";
+				backButton.style.opacity="1";
+			}
+			function solMenuButtonClicked(){
+				console.log("solu is clicked");
+				menuList.classList.remove("active");
+				solitems.classList.add("slide-left");
+				trello.style.opacity="0";
+				backButton.style.opacity="1";
+			}
+			function planMenuButtonClicked(){
+				console.log("plan menu is clicked");
+				menuList.classList.remove("active");
+				planitems.classList.add("slide-left");
+				trello.style.opacity="0";
+				backButton.style.opacity="1";
+			}
+			function resourceMenuButtonClicked(){
+				console.log("resource menu is clicked");
+				menuList.classList.remove("active");
+				resourceitems.classList.add("slide-left");
+				trello.style.opacity="0";
+				backButton.style.opacity="1";
+			}
+			function backButtonClicked(){
+				console.log("back button clicked");
+				featuresitems.classList.remove("slide-left");
+				solitems.classList.remove("slide-left");
+				planitems.classList.remove("slide-left");
+				resourceitems.classList.remove("slide-left");
+				backButton.style.opacity="0";
+				trello.style.opacity="1";
+				menuList.classList.add("active");
+			}
+			hamburgerMenu.addEventListener("click",buttonclicked);
+			feaMenuButton.addEventListener("click",subMenuClicked);
+			solMenuButton.addEventListener("click",solMenuButtonClicked);
+			planMenuButton.addEventListener("click",planMenuButtonClicked);
+			resourceMenuButton.addEventListener("click",resourceMenuButtonClicked);
+			backButton.addEventListener("click",backButtonClicked);
+		</script>
+	</body>
+</html>

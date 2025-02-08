@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	</head>
+	<style>
+		h3{
+			font-size:3rem;
+		}
+		.pwd,label,button{
+			display:block;
+		}
+		.googleimg,.slackimg{
+			width:5%;
+		}
+		.dot{
+			border:1px solid black;
+			border-radius:50%;
+			height:3px;
+			width:3px;
+			display:inline-block;
+			background-color:black;
+		}
+		.logincontainer{
+			width:400px;
+			box-shadow:rgba(0, 0, 0, 0.1) 0px 0px 10px;
+			margin-top:3rem;
+			text-align:center;
+			padding:1rem 2rem;
+		}
+		.emailplace{
+			height:6%;
+			width:90%;
+			margin:1rem auto;
+			border:1px solid black;
+		}
+		.emailplace:hover{
+			border:2.5px solid blue;
+			border-radius:5px;
+		}
+		.chkbox{
+			display:inline-block;
+			position:relative;
+			left:-100px;
+			top:4px;
+		}
+		button{
+			width:90%;
+			margin:1rem auto;
+			height:6%;
+			background-color:white;
+			border-width:thin;
+			border-radius:3px;
+		}
+		.ctn-btn{
+			background-color:blue;
+			color:white;
+		}
+		.pwd{
+			width:90%;
+			margin:1rem auto;
+			height:6%;
+			border:1px solid black;
+		}
+		@media(max-width:767.5px)
+		{
+		.logincontainer{
+			width:300px;
+		}
+		.chkbox{
+			display:inline-block;
+			position:relative;
+			left:-60px;
+			top:4px;
+		}
+		}
+	</style>
+	<body>
+		<div class="container logincontainer">
+			<h3><b>Trello</b></h3>
+			<h4><b>Log in to continue</b></h4>
+			<form name="f1" action="index.html" onsubmit="return matchpass()">
+			<input class="emailplace"type="email" name="email"placeholder="Enter your email"></input><br/>
+			<label class="chkbox"><input id="chkbxid" type="checkbox"></input>Remember me</label>
+			<input class="pwd"type="password" name="password"></input>
+			<button class="ctn-btn" type="submit">continue</button><br/>
+			</form>
+			<p>Or continue with:</p>
+			<button><img class="googleimg" src="https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/google-logo.5867462c.svg"> Google</button>
+			<button><img class="microsoftimg" src="https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/microsoft-logo.c73d8dca.svg"> Microsoft</button>
+			<button><img class="appleimg" src="https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/apple-logo.54e0d711.svg">Apple</button>
+			<button><img class="slackimg"src="https://id-frontend.prod-east.frontend.public.atl-paas.net/assets/slack-logo.5d730c10.svg"> Slack</button>
+			<a class="account-create">Create an account</a>
+			<hr/>
+			<h5><b>ATLASSIAN</b></h5>
+			<p>One account for Trello, Jira, Confluence and more.</p>
+			<a>Privacy Policy</a>
+			<span class="dot"></span>
+			<a>User Notice</a>
+		</div>
+	</body>
+	<script>
+		function matchpass()
+		{
+			var email=document.f1.email.value;
+			var pwd=document.f1.password.value;
+			if(!email.match(/^([a-zA-Z0-9]+)@([a-zA-Z]+)([\.])([a-z]{2,5})$/))
+			{
+				alert("Please enter a valid mail address");
+				return false;
+			}
+			if(!pwd.match(/^([a-zA-Z0-9!@#$%^&*()]{6,})$/)|| pwd.length<=6)
+			{
+				alert("please should contain atleast 6 characters and any one of the special characters");
+				return false;
+			}
+			else{
+				
+				return true;
+			}
+		}
+	</script>
+</html>
